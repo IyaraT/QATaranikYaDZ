@@ -1,0 +1,47 @@
+package lesson_4.exercise_1;
+
+public class Cat extends Animal {
+
+    private static int catCount = 0;
+
+    private boolean satiety;
+    private final int appetite;
+
+    public Cat(String name, int appetite) {
+        super(name);
+        this.appetite = appetite;
+        this.satiety = false;
+        catCount++;
+    }
+
+    @Override
+    public void run(int distance) {
+        if (distance <= 200) {
+            System.out.println(name + " пробежал " + distance + " м");
+        } else {
+            System.out.println(name + " не может пробежать " + distance + " м");
+        }
+    }
+
+    @Override
+    public void swim(int distance) {
+        System.out.println(name + " не умеет плавать");
+    }
+
+    public void eat(Plate bowl) {
+        if (bowl.decreaseFood(appetite)) {
+            satiety = true;
+            System.out.println(name + " покушал");
+        } else {
+            System.out.println(name + " не смог покушать");
+        }
+    }
+
+    public void info() {
+        System.out.println("Кот: " + name + "сытость: " + (satiety ? "сыт" : "голоден"));
+    }
+
+    public static int getCatCount() {
+        return catCount;
+    }
+}
