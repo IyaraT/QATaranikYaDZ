@@ -3,13 +3,10 @@ package lesson_4.exercise_1;
 public class Cat extends Animal {
 
     private static int catCount = 0;
-
     private boolean satiety;
-    private final int appetite;
 
-    public Cat(String name, int appetite) {
+    public Cat(String name) {
         super(name);
-        this.appetite = appetite;
         this.satiety = false;
         catCount++;
     }
@@ -28,8 +25,9 @@ public class Cat extends Animal {
         System.out.println(name + " не умеет плавать");
     }
 
-    public void eat(Plate bowl) {
-        if (bowl.decreaseFood(appetite)) {
+    public void eat(Plate bowl, int amount) {
+        if (bowl.getFood() >= amount) {
+            bowl.decreaseFood(amount);
             satiety = true;
             System.out.println(name + " покушал");
         } else {
@@ -38,7 +36,7 @@ public class Cat extends Animal {
     }
 
     public void info() {
-        System.out.println("Кот: " + name + "сытость: " + (satiety ? "сыт" : "голоден"));
+        System.out.println("Кот: " + name + ", сытость: " + (satiety ? "сыт" : "голоден"));
     }
 
     public static int getCatCount() {

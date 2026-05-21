@@ -8,20 +8,19 @@ public class Plate {
         this.food = food;
     }
 
-    public boolean decreaseFood(int amount) {
-        if (food >= amount) {
-            food -= amount;
-            return true;
-        }
-        return false;
+    public int getFood() {
+        return food;
+    }
+
+    public void decreaseFood(int amount) {
+        food -= amount;
     }
 
     public void addFood(int amount) {
         food += amount;
-        System.out.println("Добавили " + amount + " еды.");
     }
 
     public void info() {
-        System.out.println("В миске: " + food + " еды.");
+        System.out.println("В тарелке: " + food);
     }
 }
